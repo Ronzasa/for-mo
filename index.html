@@ -1,0 +1,929 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c0b12">
+<title>For Mo — Chapter 21 ♡</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#0c0b12;
+  --cream:#f8efe7;
+  --muted:#b7aeb6;
+  --gold:#e7bf93;
+  --rose:#d7a4ab;
+  --line:rgba(240,211,191,.18);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+  --mono:'DM Mono',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:75px}
+body{
+  margin:0;background:var(--bg);color:var(--cream);
+  font-family:var(--sans);line-height:1.75;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 15%,#57314b33,transparent 40%),
+    radial-gradient(circle at 90% 80%,#76543d22,transparent 40%);
+}
+button,a{font:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible{
+  outline:2px solid var(--gold);outline-offset:5px;
+}
+[hidden]{display:none!important}
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:20;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:17px 6%;background:#0c0b12dc;
+  backdrop-filter:blur(15px);border-bottom:1px solid var(--line);
+}
+.brand{font:20px var(--serif);color:var(--cream);text-decoration:none}
+.brand span{color:var(--gold)}
+.topbar small{color:var(--muted);font:10px var(--mono);letter-spacing:1px}
+.section{padding:110px 6%;position:relative}
+.wrap{max-width:1100px;margin:auto}
+.eyebrow{
+  color:var(--gold);font:11px var(--mono);
+  letter-spacing:3px;text-transform:uppercase;margin-bottom:25px;
+}
+.eyebrow::before{content:"✧ ";font-size:16px}
+h1,h2,h3{
+  font-family:var(--serif);font-weight:400;
+  letter-spacing:-.04em;line-height:1.18;
+}
+h1{font-size:clamp(60px,10vw,130px);margin:0 0 30px}
+h2{font-size:clamp(44px,6vw,78px);margin:0 0 25px}
+h3{font-size:clamp(25px,4vw,42px)}
+.italic{font-style:italic;color:var(--gold)}
+.muted{color:var(--muted)}
+.button{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:15px 24px;min-height:52px;
+  border:1px solid var(--gold);border-radius:4px;
+  background:var(--gold);color:#18131a;
+  font:600 13px var(--sans);text-decoration:none;
+  transition:.3s;cursor:pointer;
+}
+.button:hover{transform:translateY(-3px);background:#f8d7aa}
+.secondary{
+  background:transparent;color:var(--cream);
+  border-color:#e7bf9377;
+}
+.secondary:hover{background:#e7bf931c;color:var(--gold)}
+.rule{
+  height:1px;max-width:1100px;margin:auto;
+  background:linear-gradient(90deg,transparent,var(--line),transparent);
+}
+
+/* INTRO */
+.hero{
+  min-height:100svh;display:flex;align-items:center;
+  justify-content:center;text-align:center;overflow:hidden;
+}
+.hero::before{
+  content:"21";position:absolute;right:2%;top:14%;
+  font:400 clamp(260px,48vw,650px) var(--serif);
+  color:#e7bf9309;pointer-events:none;
+}
+.hero .wrap{position:relative;z-index:1}
+.hero p.intro{max-width:520px;margin:0 auto 35px;color:var(--muted)}
+.hero-note{font:11px var(--mono);color:#8d828b;margin-top:30px}
+.twinkle{
+  position:absolute;width:4px;height:4px;
+  border-radius:50%;background:var(--gold);
+  box-shadow:0 0 15px var(--gold);
+  animation:pulse 3s infinite alternate;
+}
+.t1{top:20%;left:18%}.t2{top:70%;right:16%}
+.t3{bottom:18%;left:30%}.t4{top:27%;right:24%}
+
+/* QUIZ */
+.two-col{
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:70px;
+}
+.quiz-card{
+  background:#ffffff06;border:1px solid var(--line);
+  padding:35px;border-radius:8px;
+}
+.quiz-label{
+  font:11px var(--mono);color:var(--gold);
+  letter-spacing:2px;
+}
+.question{font:30px/1.5 var(--serif);margin:30px 0}
+.answer{
+  display:block;width:100%;margin:12px 0;padding:16px;
+  background:#ffffff04;color:var(--cream);
+  border:1px solid #ffffff22;border-radius:5px;
+  text-align:left;font-size:14px;
+}
+.answer:hover,.answer.selected{
+  border-color:var(--gold);background:#e7bf9314;
+}
+.feedback{color:var(--gold);min-height:28px;font-size:14px}
+#quizNext{display:none;margin-top:15px}
+#quizNext.show{display:inline-flex}
+
+/* CONSTELLATION */
+.stars-section{
+  background:radial-gradient(circle at 70% 45%,#56354a20,transparent 55%);
+}
+.stars-layout{
+  display:grid;grid-template-columns:.8fr 1.2fr;
+  align-items:center;gap:55px;
+}
+.count{font:15px var(--mono);margin:30px 0}
+.count strong{font:36px var(--serif);color:var(--gold)}
+.progress{
+  height:3px;max-width:280px;background:#ffffff22;margin-top:12px;
+}
+.progress-fill{height:100%;width:0;background:var(--gold);transition:.3s}
+.constellation{
+  position:relative;width:100%;aspect-ratio:1.12;
+  max-width:650px;margin:auto;
+}
+.constellation::before{
+  content:"";position:absolute;inset:9%;
+  border:1px solid #e7bf931b;border-radius:50%;
+}
+.const-lines{
+  position:absolute;inset:0;width:100%;height:100%;
+}
+.const-lines line{stroke:#e7bf9340;stroke-width:.25}
+.star{
+  position:absolute;transform:translate(-50%,-50%);
+  width:40px;height:40px;border-radius:50%;
+  background:#18141e;border:1px solid #e7bf9355;
+  color:var(--gold);font-size:22px;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  transition:.2s;
+}
+.star:hover{
+  transform:translate(-50%,-50%) scale(1.16);
+  box-shadow:0 0 24px #e7bf9340;
+}
+.star.visited{
+  background:#e7bf9340;border-color:var(--gold);
+  box-shadow:0 0 15px #e7bf9325;
+}
+.star small{
+  position:absolute;top:42px;
+  font:9px var(--mono);color:var(--muted);
+}
+dialog{
+  width:min(520px,calc(100% - 30px));
+  border:1px solid #e7bf9366;border-radius:9px;
+  background:#1a151e;color:var(--cream);
+  padding:35px;box-shadow:0 30px 100px #0009;
+}
+dialog::backdrop{background:#000c;backdrop-filter:blur(8px)}
+dialog h3{margin:15px 0}
+dialog p{color:#ded0d1}
+.dialog-top{display:flex;justify-content:space-between}
+.dialog-top span{color:var(--gold);font:12px var(--mono)}
+.icon-button{
+  background:none;border:0;color:var(--cream);font-size:28px;
+}
+.dialog-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+
+/* MISSING VIDEO */
+.memory{text-align:center}
+.memory .wrap{max-width:800px}
+.fake-player{
+  margin:40px auto 25px;min-height:330px;
+  display:grid;place-items:center;
+  background:radial-gradient(circle,#29232e,#121018 70%);
+  border:1px solid var(--line);border-radius:8px;
+  position:relative;
+}
+.video-icon{font-size:52px;color:var(--rose)}
+.filename{font:16px var(--mono);margin-top:15px}
+.error{font:11px var(--mono);color:#ad8a98}
+.player-bottom{
+  position:absolute;bottom:15px;left:20px;right:20px;
+  display:flex;justify-content:space-between;
+  font:10px var(--mono);color:#8e838e;
+}
+.recovered{
+  font:italic clamp(23px,3vw,32px)/1.7 var(--serif);
+  color:var(--gold);margin:35px auto;max-width:640px;
+}
+
+/* LETTER */
+.letter-section{
+  background:linear-gradient(180deg,transparent,#a46c6c0d,transparent);
+}
+.letter-intro{text-align:center}
+.envelope{
+  position:relative;width:280px;height:180px;
+  margin:35px auto;
+  filter:drop-shadow(0 20px 25px #0005);
+}
+.envelope-body{
+  position:absolute;bottom:0;width:100%;height:160px;
+  background:linear-gradient(135deg,#dfb9a9,#bd8d86);
+  clip-path:polygon(0 0,50% 43%,100% 0,100% 100%,0 100%);
+}
+.envelope-flap{
+  position:absolute;top:20px;width:100%;height:115px;
+  background:#edc5b2;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;transition:.8s;z-index:2;
+}
+.envelope-seal{
+  position:absolute;top:85px;left:calc(50% - 21px);
+  width:42px;height:42px;background:#764353;
+  border-radius:50%;display:grid;place-items:center;
+  color:#ffe0ce;font-size:25px;z-index:3;
+}
+.envelope.open .envelope-flap{transform:rotateX(175deg);z-index:0}
+.envelope.open .envelope-seal{opacity:0}
+.letter-paper{
+  max-width:790px;margin:55px auto 0;
+  padding:clamp(30px,6vw,75px);
+  background:#f6ede4;color:#35292b;
+  border-radius:3px;
+  box-shadow:0 30px 100px #0006;
+}
+.letter-paper p{
+  font:clamp(15px,1.5vw,17px)/2 var(--serif);
+  margin:0 0 22px;
+}
+.letter-label{
+  font:11px var(--mono);letter-spacing:2px;
+  color:#946f65;margin-bottom:35px;
+}
+.introduction{
+  border-left:2px solid #caa193;
+  padding-left:22px;margin:30px 0;
+}
+.letter-quote{
+  font:italic 28px/1.6 var(--serif)!important;
+  color:#79515a;margin:35px 0!important;
+}
+.letter-sign{
+  font:italic 26px var(--serif)!important;
+  color:#79515a;
+}
+
+/* BIRTHDAY CAKE */
+.birthday-section{text-align:center}
+.cake-area{
+  max-width:520px;min-height:360px;
+  position:relative;margin:35px auto;
+}
+.cake{width:min(450px,100%);height:355px;position:relative;margin:auto}
+.cake-plate{
+  position:absolute;left:5%;right:5%;bottom:38px;
+  height:15px;border-radius:50%;
+  background:#c7a6a9;box-shadow:0 10px 0 #765b68;
+}
+.tier{
+  position:absolute;border-radius:12px 12px 7px 7px;
+  background:linear-gradient(90deg,#b96f86,#e1a5a7,#bc7c8e);
+  border:1px solid #ffffff44;
+}
+.tier::before{
+  content:"";position:absolute;top:7px;left:0;right:0;height:15px;
+  background:radial-gradient(ellipse at 8% 0,#fff0dd 0 38%,transparent 40%)
+    0 0/35px 18px repeat-x;opacity:.7;
+}
+.bottom{width:88%;height:91px;left:6%;bottom:52px}
+.middle{width:70%;height:85px;left:15%;bottom:139px}
+.top{width:52%;height:76px;left:24%;bottom:220px}
+.cake-message{
+  position:absolute;left:15%;right:15%;bottom:82px;z-index:2;
+  font:italic 21px var(--serif);color:#fff0db;
+}
+.candle{
+  position:absolute;z-index:5;bottom:295px;
+  width:5px;height:29px;
+  background:repeating-linear-gradient(135deg,#fff2d9 0 4px,#db8f9f 4px 7px);
+}
+.candle::before{
+  content:"";position:absolute;left:-3px;top:-16px;
+  width:11px;height:18px;border-radius:70%;
+  background:#ffcc75;
+  box-shadow:0 0 16px 4px #ffa94b88;
+  animation:flame 1.3s infinite alternate;
+}
+.cake.blown .candle::before{animation:out .45s forwards}
+.wish-message{
+  font:italic clamp(24px,4vw,38px)/1.6 var(--serif);
+  color:var(--gold);max-width:700px;margin:35px auto;
+}
+.confetti{
+  position:absolute;top:20px;z-index:8;
+  width:8px;height:13px;pointer-events:none;
+  animation:fall 2.4s forwards;
+}
+
+/* TERMINAL */
+.terminal-section{text-align:center}
+.terminal{
+  max-width:800px;margin:40px auto;
+  background:#100f14;border:1px solid var(--line);
+  border-radius:8px;overflow:hidden;text-align:left;
+}
+.terminal-title{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;background:#201a23;
+  font:11px var(--mono);color:#b6a4ae;
+}
+.dots{display:flex;gap:7px}
+.dots span{width:9px;height:9px;border-radius:50%;background:#ad747e}
+.dots span:nth-child(2){background:#c1a272}
+.dots span:nth-child(3){background:#8ea393}
+.terminal pre{
+  padding:26px;min-height:180px;margin:0;
+  white-space:pre-wrap;overflow-wrap:anywhere;
+  color:#ebd4c4;font:13px/1.9 var(--mono);
+}
+.terminal .button{margin:0 0 25px 25px}
+footer{
+  text-align:center;padding:60px 20px;
+  border-top:1px solid var(--line);
+  color:var(--muted);font-size:13px;
+}
+footer .signature{
+  font:italic 35px var(--serif);color:var(--gold);
+}
+footer a{color:var(--gold)}
+[data-animate]{
+  opacity:0;transform:translateY(20px);
+  transition:opacity .8s,transform .8s;
+}
+[data-animate].visible{opacity:1;transform:none}
+@keyframes pulse{to{opacity:.2;transform:scale(.7)}}
+@keyframes flame{to{transform:rotate(10deg) scale(.9)}}
+@keyframes out{to{opacity:0;transform:translateY(-20px) scale(.2)}}
+@keyframes fall{
+  0%{opacity:1}
+  100%{
+    opacity:0;
+    transform:translate(var(--sway),340px) rotate(var(--spin));
+  }
+}
+@media(max-width:760px){
+  .section{padding:85px 20px}
+  .two-col,.stars-layout{grid-template-columns:1fr;gap:35px}
+  .quiz-card{padding:25px}
+  .topbar{padding:15px 20px}
+  .topbar small{font-size:9px}
+  .fake-player{min-height:260px}
+  .letter-paper{padding:30px 24px}
+  .cake-area{min-height:330px}
+  .cake{height:345px}
+  .candle{bottom:287px}
+  .tier.top{bottom:212px}
+  .tier.middle{bottom:131px}
+  .tier.bottom{bottom:44px}
+  .cake-plate{bottom:30px}
+  .cake-message{bottom:75px}
+  .star{width:34px;height:34px;font-size:18px}
+  .star small{top:36px}
+  h1{font-size:clamp(55px,12vw,85px)}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  [data-animate]{opacity:1;transform:none}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#home">R<span>♡</span>H.</a>
+  <small>A LITTLE SOMETHING FOR MO / 21</small>
+</header>
+
+<main>
+
+<!-- CHAPTER 00: INTRO -->
+<section class="section hero" id="home">
+  <span class="twinkle t1"></span>
+  <span class="twinkle t2"></span>
+  <span class="twinkle t3"></span>
+  <span class="twinkle t4"></span>
+  <div class="wrap">
+    <p class="eyebrow" data-animate>A note from Ronie to Amogelang</p>
+    <h1 data-animate>Less is more.<br><span class="italic">Except when<br>it's you.</span></h1>
+    <p class="intro" data-animate>
+      I was going to send you a simple birthday message.
+      Then I remembered who I was writing it for.
+      So, naturally, I broke my own rule.
+    </p>
+    <a href="#quiz" class="button" data-animate>Open your little surprise ↗</a>
+    <p class="hero-note">Made especially for your 21st. Best enjoyed at your own pace. ♡</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- CHAPTER 01: QUIZ -->
+<section class="section" id="quiz">
+  <div class="wrap two-col">
+    <div data-animate>
+      <p class="eyebrow">01 / A very serious assessment</p>
+      <h2>First, a tiny <span class="italic">question.</span></h2>
+      <p class="muted">
+        As a Computer Science major, I'd be irresponsible not to test
+        whether the user understands the assignment.
+        Don't worry, the pass mark is very generous. 😭
+      </p>
+    </div>
+    <div class="quiz-card" data-animate>
+      <div class="quiz-label">QUIZ_001 · 1 QUESTION</div>
+      <p class="question">Who is one of Ronie's favourite people?</p>
+      <button class="answer" data-correct="false">A. The coursework</button>
+      <button class="answer" data-correct="true">B. Amogelang, obviously</button>
+      <button class="answer" data-correct="false">C. His sleep schedule</button>
+      <p class="feedback" id="quizFeedback">Choose wisely, Mo. 👀</p>
+      <a href="#reasons" id="quizNext" class="button">Correct. Continue ↗</a>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- CHAPTER 02: 21 REASONS -->
+<section class="section stars-section" id="reasons">
+  <div class="wrap stars-layout">
+    <div data-animate>
+      <p class="eyebrow">02 / A little universe</p>
+      <h2>21 little reasons.<br><span class="italic">One big thank you.</span></h2>
+      <p class="muted">
+        Every glowing star holds something I appreciate about you.
+        Tap a few. Tap them all. There's no rush.
+      </p>
+      <div class="count">
+        <strong id="seenCount">00</strong> / 21 discovered
+        <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+      <a href="#memory" class="button secondary">There's more to this story ↗</a>
+    </div>
+    <div class="constellation" id="constellation">
+      <svg class="const-lines" id="constLines" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+    </div>
+  </div>
+</section>
+
+<dialog id="starDialog">
+  <div class="dialog-top">
+    <span id="reasonNumber">REASON 01 / 21</span>
+    <button class="icon-button" id="closeDialog" aria-label="Close">×</button>
+  </div>
+  <h3 id="reasonTitle"></h3>
+  <p id="reasonBody"></p>
+  <div class="dialog-actions">
+    <button class="button" id="nextReason">Another reason ↗</button>
+    <button class="button secondary" id="backToStars">Back to the stars</button>
+  </div>
+</dialog>
+
+<div class="rule"></div>
+
+<!-- CHAPTER 03: LOST VIDEO -->
+<section class="section memory" id="memory">
+  <div class="wrap">
+    <p class="eyebrow" data-animate>03 / An unrecoverable file</p>
+    <h2 data-animate>Some memories never made it <span class="italic">to the cloud.</span></h2>
+    <p class="muted" data-animate>
+      Remember that video we had? The one that wasn't backed up on WhatsApp?
+      Well, I couldn't recover it. But there's something about that
+      I want you to know.
+    </p>
+    <div class="fake-player" data-animate>
+      <div>
+        <div class="video-icon">▣</div>
+        <div class="filename">memory_001.mp4</div>
+        <div class="error">ERROR 404: FILE NOT FOUND</div>
+      </div>
+      <div class="player-bottom">
+        <span>LOCAL STORAGE · MISSING</span>
+        <span>00:00 / ∞</span>
+      </div>
+    </div>
+    <button class="button secondary" id="recoverMemory">Recover what matters ↗</button>
+    <div id="recoveryText" class="recovered" hidden>
+      “We lost the video, Mo. Not the memory.
+      And some things don't need a backup to stay with us.”
+      <p style="font:13px var(--sans);color:var(--muted)">— Ronie</p>
+      <a href="#letter" class="button">There's something I wrote you ↗</a>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- CHAPTER 04: LETTER -->
+<section class="section" id="letter">
+  <div class="wrap">
+    <div class="letter-intro" data-animate>
+      <p class="eyebrow">04 / The words I actually wanted to say</p>
+      <h2>Dear <span class="italic">Amogelang,</span></h2>
+      <p class="muted">
+        You know how I feel about the meaning of words.
+        This is why I couldn't just say "happy birthday" and call it a day.
+      </p>
+      <div class="envelope" id="envelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body"></div>
+        <div class="envelope-seal">♡</div>
+      </div>
+      <button class="button" id="openLetter">Open Ronie's letter ✉</button>
+    </div>
+
+    <article class="letter-paper" id="fullLetter" hidden>
+      <div class="letter-label">A LETTER FOR MO · CHAPTER TWENTY-ONE</div>
+
+      <p>Damn, I really haven’t tapped into my writing side in a while. But because of the type of person you are, I believe your influence has brought me back to that state again. More than anything, I think it comes from understanding just how much words mean to you.</p>
+
+      <p>If I could describe how much your presence and friendship have changed me as a person, I don't even think you'd understand the extent of it. I genuinely wouldn't know where to start. But then again, that's not such a big deal, because I believe our friendship has long passed the stage of worrying about where things started.</p>
+
+      <p>You know, the phrase "you don't know what you mean to me" has become so cliché that, in some ways, it's lost its meaning. However, I, for one, don't have the luxury of throwing those words around. I value the meaning of words far too much. So when I tell you that you mean an astounding amount to me, understand that those aren't just words put together to sound beautiful. They come from the very depths of my soul.</p>
+
+      <p>Aggh, man. 😭</p>
+
+      <p>I live by the philosophy that "less is more." I keep a small circle because I value genuine connections over having a multitude of people around me. And you being part of that small circle means something. It means you're one of Ronie's favourites. Crazy, right? 😭</p>
+
+      <p>And trust me, it genuinely breaks my heart knowing that I might not be there for your 21st birthday celebration. It's an internal conflict I've been trying to resolve for weeks, and somehow, it still bugs the hell out of me.</p>
+
+      <p>But you know what? If I ever had the opportunity to introduce you to someone who had never met you, I imagine it would go something like this:</p>
+
+      <div class="introduction">
+        <p>"Hey, stranger. This is Amogelang."</p>
+        <p>Don't ask me how we met, but trust me when I tell you that if you're looking for a friend who is both willing and able to listen, even when she doesn't have a solution to your problems, this is her.</p>
+        <p>If you're looking for a friend who would put herself last just to see you happy, this is her.</p>
+        <p>If you're looking for someone who will laugh at your jokes, understand your humour, and occasionally entertain your nonsense, this is her.</p>
+        <p>If you're looking for a friend who will take her time to understand the kind of human being you are, learn what you like and dislike, and make an effort to know you beyond the surface, this is her.</p>
+        <p>If you're looking for a friend who won't hesitate to tell you when you're invalidating her feelings, even when you're convinced you're right, this is Mo. 😭</p>
+        <p>If you're looking for someone filled with so much love, yet carrying such a soft and sensitive heart, this is her.</p>
+        <p>Damn, now I feel guilty about not being at your 21st, Mo. 😔</p>
+        <p>If you're looking for a friend who, even after being disappointed, will try to find it within herself to forgive you, this is her.</p>
+      </div>
+
+      <p>And trust me, stranger, I could do this all day. I could spend hours breaking down what a wonderful specimen of a human being she is. A person raised with love, good values, compassion, and so much more.</p>
+
+      <p>You see, one thing I've come to appreciate about our friendship is that we've had our fallouts, our misunderstandings, and moments when things weren't necessarily okay between us. Yet somehow, we always found our way back to each other.</p>
+
+      <p>And strangely enough, I would say those moments have been some of the most meaningful parts of our friendship. Not because I enjoyed them, but because they made me realise just how much this friendship means to me.</p>
+
+      <p>I won't sit here and act tough or nonchalant and pretend those days didn't bother me. Man, I was literally losing sleep over some of them. 😭</p>
+
+      <p>But that's not what this whole piece of writing is about.</p>
+
+      <p>This is about appreciating you, Mo.</p>
+
+      <p>I'm beyond lucky to have you as a friend, and I hope you understand that I will always be there for you, always rooting for you, and always wishing the absolute best for you, regardless of whatever circumstances this world may bring.</p>
+
+      <p>And you know me. I keep my promises.</p>
+
+      <p>Trust me, I've been grinding through my coursework, partly because I'm trying to see whether I can somehow squeeze in enough time to celebrate with you. It's funny because I find myself making efforts and doing things I wouldn't ordinarily do for anyone else. And I think that's how I know just how deeply I appreciate you.</p>
+
+      <p>I still go back and read the birthday message you sent me. And trust me, there are moments when tears genuinely settle at the edges of my eyes. But you know me, Mr Nonchalant. I wipe those away before anybody gets suspicious. 😭</p>
+
+      <p>It's crazy how words can carry so much weight when they come from someone who genuinely means them.</p>
+
+      <p>And I suppose that's what I've been trying to tell you throughout this whole message. It's not necessarily about how many words I can put together, or how beautifully I can arrange them. It's about the meaning behind them. It's about making sure that, even if I don't always express it, you know just how much I value your existence in my life.</p>
+
+      <p>I told you earlier that I live by "less is more."</p>
+
+      <p>Looking at the length of this message, I think I might have just violated one of my own principles. 😭</p>
+
+      <p class="letter-quote">But then again, it's you.<br>Why wouldn't I?</p>
+
+      <p>With all that said, Amogelang, I wish you a great, wonderful, and lovely 21st birthday. Enjoy this year because, as much as birthdays come every year, turning 21 is a remarkable milestone, one that only comes once. I'm beyond glad that I get to be part of it.</p>
+
+      <p>Yeah, man, wishing you nothing but the best, and hopefully, you'll find it in your heart to forgive ngwanago for not being there. 😭❤️</p>
+
+      <p class="letter-sign">Love,<br>Ronie Hokwana.</p>
+
+      <div style="text-align:center;margin-top:40px">
+        <a href="#birthday" class="button">One last birthday surprise ↗</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- CHAPTER 05: CAKE -->
+<section class="section birthday-section" id="birthday">
+  <div class="wrap">
+    <p class="eyebrow" data-animate>05 / The main event</p>
+    <h2 data-animate>Chapter <span class="italic">twenty-one.</span></h2>
+    <p class="muted">
+      I couldn't be certain I'd make it to your celebration,
+      so I made sure I could still bring you a cake.
+      A digital one, obviously.
+      The budget is giving Computer Science student. 😭
+    </p>
+    <div class="cake-area" id="cakeArea">
+      <div class="cake" id="cake">
+        <div class="cake-plate"></div>
+        <div class="tier bottom"></div>
+        <div class="tier middle"></div>
+        <div class="tier top"></div>
+        <div class="cake-message">Happy 21st, Mo ♡</div>
+        <div id="candles"></div>
+      </div>
+    </div>
+    <button class="button" id="wishButton">Make a wish &amp; blow out the candles ✧</button>
+    <p class="wish-message" id="wishMessage" hidden>
+      Happy 21st birthday, Amogelang.
+      May this chapter be as full of love as the love you give
+      to everyone around you.
+      And may you never forget how deeply you are appreciated. ♡
+    </p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- CHAPTER 06: TERMINAL -->
+<section class="section terminal-section" id="terminal">
+  <div class="wrap">
+    <p class="eyebrow" data-animate>06 / Developer's note</p>
+    <h2 data-animate>Of course, I had to <span class="italic">write some code.</span></h2>
+    <p class="muted">
+      You couldn't seriously expect me to create a whole website
+      without hiding at least one extremely unnecessary programming joke in it.
+    </p>
+
+    <div class="terminal">
+      <div class="terminal-title">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <span>ronie@heart:~/friendship</span>
+        <span>mo.js</span>
+      </div>
+      <pre id="terminalOutput">$ node mo.js
+
+// Ready when you are, Mo.
+// Press the button to run the program. ♡</pre>
+      <button class="button secondary" id="runCode">Run friendship.js ▶</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>A little corner of the internet, made especially for Amogelang.</p>
+  <p class="signature">With love, Ronie ♡</p>
+  <p>LESS IS MORE. EXCEPT WHEN IT'S YOU. · CHAPTER 21</p>
+  <a href="#home">Back to the beginning ↑</a>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function goTo(el){
+  if(el) el.scrollIntoView({
+    behavior:reducedMotion?"auto":"smooth",
+    block:"start"
+  });
+}
+
+/* QUIZ */
+const answers=document.querySelectorAll(".answer");
+const feedback=document.getElementById("quizFeedback");
+const quizNext=document.getElementById("quizNext");
+
+answers.forEach(button=>{
+  button.addEventListener("click",()=>{
+    answers.forEach(b=>b.classList.remove("selected"));
+    button.classList.add("selected");
+
+    const correct=button.dataset.correct==="true";
+    feedback.textContent=correct
+      ?"Correct. Obviously. One of Ronie's favourites. Crazy, right? 😭"
+      :"Not quite, Mo. You know the answer. 😭";
+
+    quizNext.classList.toggle("show",correct);
+  });
+});
+
+/* 21 REASONS */
+const reasons=[
+  ["You listen.","Even when you don't have a solution, you make the space to hear someone out. Sometimes that means more than any answer could."],
+  ["You show up for people.","You have a way of putting someone else's happiness before your own. I hope you remember that yours matters just as much."],
+  ["You laugh with me.","Not everyone understands my humour. You do. And you even entertain the nonsense sometimes. 😭"],
+  ["You try to understand.","You take the time to learn who a person is beyond the first impression. That's a rarer quality than you might think."],
+  ["You notice the little things.","The likes, dislikes and small details people don't always say out loud. You make people feel known."],
+  ["You speak honestly.","You'll tell me when I'm invalidating your feelings. I might not enjoy hearing it in the moment, but I respect you for it."],
+  ["You have a soft heart.","There is so much love in you. Please never mistake that softness for weakness."],
+  ["You find room for forgiveness.","Even after disappointment, you try to find a way forward. I don't take that lightly."],
+  ["You know how to care.","Not just through grand gestures, but through the ordinary moments that tell someone they matter."],
+  ["You make friendship feel safe.","A friendship where a person can be honest, imperfect and still be cared for is something special."],
+  ["We found our way back.","We've had our fallouts. The fact that we could find our way back to one another means more to me than pretending we never disagreed."],
+  ["You make me less nonchalant.","I'm usually the king of acting unbothered. Then there's you, giving me genuine reasons to care out loud. 😭"],
+  ["Your words stay with me.","I still reread the birthday message you sent me. It's proof that a few sincere words can outlive the moment they were written."],
+  ["You brought back my writing.","I hadn't tapped into this side of myself in a while. Somehow, wanting to tell you what you mean to me brought it back."],
+  ["You belong in my small circle.","I live by less is more. I'm selective about who I let close. The fact that you're here is never random."],
+  ["You make people feel seen.","Being truly noticed and understood is its own kind of gift. You have that gift."],
+  ["Your friendship makes an impact.","I wish you could see how much knowing you has changed the way I think about friendship and appreciation."],
+  ["You're worth the effort.","I catch myself making an effort I might not make for most people. That tells me everything I need to know."],
+  ["You are wonderfully yourself.","The humour, the honesty, the caring heart, even the way you call me out. All of it makes you Mo."],
+  ["I'll always root for you.","Whatever this next chapter brings, I'll be wishing you the best and cheering you on. That's a promise."],
+  ["You're one of Ronie's favourites.","Crazy, right? 😭 But genuinely: happy 21st, Mo. You mean an astounding amount to me."]
+];
+
+const positions=[
+  [18,12],[39,15],[60,12],[81,14],
+  [12,30],[31,33],[50,31],[69,34],[88,32],
+  [18,51],[39,53],[60,51],[81,53],
+  [12,70],[31,72],[50,70],[69,72],[88,70],
+  [28,89],[50,88],[72,90]
+];
+
+const board=document.getElementById("constellation");
+const svg=document.getElementById("constLines");
+const seen=new Set();
+let activeReason=0;
+
+positions.forEach((pos,i)=>{
+  const star=document.createElement("button");
+  star.className="star";
+  star.style.left=pos[0]+"%";
+  star.style.top=pos[1]+"%";
+  star.setAttribute("aria-label","Reason "+(i+1));
+  star.innerHTML="✧<small>"+String(i+1).padStart(2,"0")+"</small>";
+  star.addEventListener("click",()=>openReason(i));
+  board.appendChild(star);
+
+  if(i>0){
+    const prev=positions[i-1];
+    const line=document.createElementNS("http://www.w3.org/2000/svg","line");
+    line.setAttribute("x1",prev[0]);
+    line.setAttribute("y1",prev[1]);
+    line.setAttribute("x2",pos[0]);
+    line.setAttribute("y2",pos[1]);
+    svg.appendChild(line);
+  }
+});
+
+const dialog=document.getElementById("starDialog");
+
+function openReason(i){
+  activeReason=i;
+  seen.add(i);
+  document.querySelectorAll(".star")[i].classList.add("visited");
+  document.getElementById("seenCount").textContent=String(seen.size).padStart(2,"0");
+  document.getElementById("progressFill").style.width=(seen.size/21*100)+"%";
+  document.getElementById("reasonNumber").textContent="REASON "+String(i+1).padStart(2,"0")+" / 21";
+  document.getElementById("reasonTitle").textContent=reasons[i][0];
+  document.getElementById("reasonBody").textContent=reasons[i][1];
+  if(!dialog.open)dialog.showModal();
+}
+
+document.getElementById("closeDialog").onclick=()=>dialog.close();
+document.getElementById("backToStars").onclick=()=>dialog.close();
+document.getElementById("nextReason").onclick=()=>openReason((activeReason+1)%21);
+
+/* RECOVER MEMORY */
+document.getElementById("recoverMemory").onclick=function(){
+  this.hidden=true;
+  const text=document.getElementById("recoveryText");
+  text.hidden=false;
+  goTo(text);
+};
+
+/* OPEN LETTER */
+document.getElementById("openLetter").onclick=function(){
+  const letter=document.getElementById("fullLetter");
+  letter.hidden=false;
+  document.getElementById("envelope").classList.add("open");
+  this.hidden=true;
+  setTimeout(()=>goTo(letter),reducedMotion?0:400);
+};
+
+/* CREATE 21 CANDLES */
+const candleHolder=document.getElementById("candles");
+for(let i=0;i<21;i++){
+  const candle=document.createElement("span");
+  candle.className="candle";
+  candle.style.left=(25.3+i*2.45)+"%";
+  candle.style.height=(26+i%3*2)+"px";
+  candleHolder.appendChild(candle);
+}
+
+/* BIRTHDAY WISH */
+const wishButton=document.getElementById("wishButton");
+const cake=document.getElementById("cake");
+const wishMessage=document.getElementById("wishMessage");
+let blown=false;
+
+wishButton.addEventListener("click",()=>{
+  if(blown){
+    cake.classList.remove("blown");
+    wishMessage.hidden=true;
+    wishButton.textContent="Make a wish & blow out the candles ✧";
+    blown=false;
+    return;
+  }
+
+  blown=true;
+  cake.classList.add("blown");
+  wishMessage.hidden=false;
+  wishButton.textContent="Relight the candles ↻";
+
+  const area=document.getElementById("cakeArea");
+  const colors=["#edc08e","#d7a4ab","#f8e6cc","#9c879f"];
+
+  for(let i=0;i<50;i++){
+    const piece=document.createElement("span");
+    piece.className="confetti";
+    piece.style.left=(5+Math.random()*90)+"%";
+    piece.style.background=colors[i%colors.length];
+    piece.style.animationDelay=Math.random()*.5+"s";
+    piece.style.setProperty("--sway",(Math.random()*280-140)+"px");
+    piece.style.setProperty("--spin",(Math.random()*1000-500)+"deg");
+    area.appendChild(piece);
+    piece.addEventListener("animationend",()=>piece.remove());
+  }
+
+  goTo(wishMessage);
+});
+
+/* TERMINAL EASTER EGG */
+const code=[
+  "$ node mo.js",
+  "",
+  "const friendship = {",
+  '  person: "Amogelang",',
+  "  favourite: true,",
+  "  appreciation: Infinity,",
+  '  rootingForYou: "always",',
+  "  chapter: 21",
+  "};",
+  "",
+  "> connection established ♡",
+  "> 21 reasons successfully loaded",
+  "> trying to measure appreciation...",
+  "> Error: value exceeds maximum safe integer",
+  "> Not a bug. A feature.",
+  "",
+  "// Less is more. Except when it's Mo.",
+  "// Happy 21st. — Ronie"
+].join("\n");
+
+document.getElementById("runCode").onclick=function(){
+  const output=document.getElementById("terminalOutput");
+  const button=this;
+  output.textContent="";
+  button.disabled=true;
+
+  if(reducedMotion){
+    output.textContent=code;
+    button.disabled=false;
+    return;
+  }
+
+  let index=0;
+  const timer=setInterval(()=>{
+    index+=3;
+    output.textContent=code.slice(0,index);
+    if(index>=code.length){
+      clearInterval(timer);
+      output.textContent=code;
+      button.disabled=false;
+      button.textContent="Run it again ↻";
+    }
+  },18);
+};
+
+/* SCROLL REVEALS */
+const animated=document.querySelectorAll("[data-animate]");
+
+if("IntersectionObserver" in window&&!reducedMotion){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.08});
+  animated.forEach(el=>observer.observe(el));
+}else{
+  animated.forEach(el=>el.classList.add("visible"));
+}
+
+})();
+</script>
+</body>
+</html>
